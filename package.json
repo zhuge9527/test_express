@@ -1,0 +1,17 @@
+{
+  "name": "test_express",
+  "version": "1.0.0",
+  "description": "A node server project with Express",
+  "author": "zhuge_9527 <gzs9527@126.com>",
+  "license": "ISC",
+  "main": "app.js",
+  "scripts": {
+    "strat": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6"
+  }
+}
