@@ -3,6 +3,10 @@ const proxy = require('http-proxy-middleware')
 const app = express()
 const port = 3000
 
+// mongoDB
+const mongoose = require('mongoose')
+const db = mongoose.connect('mongodb://localhost/test');
+
 // app.use('/', proxy({
 //     target: 'http://localhost:8080',
 //     changeOrigin: true,

@@ -9,7 +9,9 @@
     "strat": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "^5.11.8"
+  },
   "devDependencies": {
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.6"
