@@ -1,5 +1,20 @@
 const Supplier = require('./mongodb/mongoose').Supplier
 module.exports = (app) => {
+    app.post('/server/supplier/search', (req, res) => {
+        Supplier.find(req.body, (err, data) => {
+            if (err) {
+                console.error(err)
+                res.send(err.message)
+            } else {
+                // data[0].set('expire_date', new Date(new Date().getFullYear() + 1))
+                // data[0].save(err => {
+                //     debugger
+                //     console.trace(err)
+                // })
+                res.send(data)
+            }
+        })
+    })
     app.route('/server/supplier')
         .get((req, res) => {
             Supplier.find({}, (err, data) => {

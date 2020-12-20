@@ -30,7 +30,18 @@ const UserSchema = new Schema({
 });
 const User = mongoose.model('user', UserSchema, 'user');
 
-console.log('End.')
+const SupplierSchema = new Schema({
+    name: String,
+    code: {type: String, required: true, unique: true},
+    address: String,
+    created_at: Date,
+    updated_at: Date,
+    expire_date: Date,
+    master: String,
+});
+const Supplier = mongoose.model('supplier', SupplierSchema, 'supplier');
+
 module.exports = {
-    User
+    User,
+    Supplier
 }
