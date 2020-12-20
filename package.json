@@ -7,11 +7,12 @@
   "main": "app.js",
   "scripts": {
     "strat": "node app.js",
-    "dev": "nodemon --delay 5000ms app.js  --trace-deprecation log.txt",
+    "dev": "nodemon --trace-deprecation --delay 2000ms app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "mytest": "node ./server/user.js"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8"
   },

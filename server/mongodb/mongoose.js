@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const url = 'mongodb://localhost/test_vue'
 
-mongoose.connect(url, {useNewUrlParser: true}, (err) => {
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+}, (err) => {
     if (err) {
         console.warn('数据库连接失败：', err)
     }

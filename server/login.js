@@ -1,6 +1,35 @@
 const User = require('./mongodb/mongoose').User
 
 module.exports = (app) => {
+
+    app.all('/*', (req, res, next) => {
+        if (req.url === '/server/loginIn') {
+            next()
+            return
+        }
+        const sessionId = req.cookies['session_id']
+        const resultData = {
+            status: '404',
+            success: false,
+            message: '登录信息过期，请重新登录'
+        }
+        if (!sessionId) {
+            res.send(resultData)
+            return
+        }
+        User.findOne({'session_id': sessionId}, (err, user) => {
+            if (!err && user) {
+                const expireDate = user['session_expire_date']
+                if (expireDate && expireDate.getTime() - Date.now() > 0) {
+                    next()
+                    return
+                }
+            }
+            resultData.message = (err && err.message) || resultData.message
+            res.send(resultData)
+        })
+    })
+
     app.post('/server/loginIn', (req, res) => {
         const param = req.body
         let criteria = {
@@ -26,7 +55,7 @@ module.exports = (app) => {
                     if (data.password === param.password) {
                         const sessionId = '123-123-' + Date.now()
                         const activeDate = new Date(Date.now() + 60 * 60 * 1000)
-                        res.cookie('JSESSIONID', sessionId, {
+                        res.cookie('session_id', sessionId, {
                             expires: activeDate,
                             httpOnly: true
                         })

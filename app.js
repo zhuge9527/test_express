@@ -9,9 +9,9 @@ app.use('/static', express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.post('/server', (req, res) => {
-    res.send('hello greg')
-})
+// resolve cookies or body
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 // route and server
 require('./server/user')(app)
@@ -20,7 +20,12 @@ require('./server/login')(app)
 
 // 404
 app.use((req, res) => {
-    res.send('Don\'t found route')
+    res.send({
+        status: '404',
+        success: false,
+        message:'Don\'t found route or data.',
+        data: []
+    })
 })
 
 app.listen(port, () => console.log(`Start Express Server on port ${port}!`))
