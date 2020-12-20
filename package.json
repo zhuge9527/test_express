@@ -7,13 +7,17 @@
   "main": "app.js",
   "scripts": {
     "strat": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --delay 5000ms app.js  --trace-deprecation log.txt",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mytest": "node ./server/user.js"
   },
   "dependencies": {
+    "mongodb": "^3.6.3",
     "mongoose": "^5.11.8"
   },
   "devDependencies": {
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.6"
+    "http-proxy-middleware": "^1.0.6",
+    "nodemon": "^2.0.6"
   }
 }
