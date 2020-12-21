@@ -9,6 +9,7 @@
     "strat": "node app.js",
     "dev": "nodemon --trace-deprecation --delay 2000ms app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build-public": "node ../test_vue/build/build.js",
     "mytest": "node ./server/user.js"
   },
   "dependencies": {

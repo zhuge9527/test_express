@@ -78,8 +78,6 @@ module.exports = (app) => {
                         })
                         data.set('session_id', sessionId)
                         data.set('session_expire_date', activeDate)
-                        // data.markModified('session_id')
-                        // data.markModified('session_expire_date')
                         if (!data.username) {
                             data.set('username', data.name)
                         }

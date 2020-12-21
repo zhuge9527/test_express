@@ -17,14 +17,4 @@ require('./server/user')(app)
 require('./server/supplier')(app)
 require('./server/login')(app)
 
-// 404
-app.use((req, res) => {
-    res.send({
-        status: '404',
-        success: false,
-        message:'Don\'t found route or data.',
-        data: []
-    })
-})
-
 app.listen(port, () => console.log(`Start Express Server on port ${port}!`))
