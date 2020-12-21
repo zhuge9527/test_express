@@ -3,8 +3,7 @@ const app = require('express')()
 const port = 3000
 
 // static file
-app.use(express.static('../public'))
-app.use('/static', express.static('public'))
+app.use(express.static('./public'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

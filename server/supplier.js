@@ -6,7 +6,7 @@ module.exports = (app) => {
                 console.error(err)
                 res.send(err.message)
             } else {
-                // data[0].set('expire_date', new Date(new Date().getFullYear() + 1))
+                // data[0].set('expire_date', new Date(new Date().getFullYear() + 1, 1))
                 // data[0].save(err => {
                 //     debugger
                 //     console.trace(err)
