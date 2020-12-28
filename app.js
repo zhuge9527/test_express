@@ -1,19 +1,20 @@
 const express = require('express')
-const app = require('express')()
+const app = express()
 const port = 3000
 
 // static file
 app.use(express.static('./public'))
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({extended: true}))
 
 // resolve cookies or body
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
 // route and server
-require('./server/user')(app)
+// const userRouter = require('./server/user')
+// app.use('/server/user', userRouter)
 require('./server/supplier')(app)
 require('./server/login')(app)
 
