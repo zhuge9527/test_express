@@ -23,23 +23,49 @@ const UserSchema = new Schema({
         age: Number,
         website: String
     },
-    created_at: Date,
-    updated_at: Date,
     session_id: String,
     session_expire_date: Date
-});
+}, {
+    timestamps: {
+        createdAt: 'created',
+        updatedAt: 'updated'
+    }
+})
 const User = mongoose.model('user', UserSchema, 'user');
 
 const SupplierSchema = new Schema({
     name: String,
-    code: {type: String, required: true, unique: true},
+    code: {
+        type: String,
+        required: true,
+        unique: true,
+        minlength: 5
+    },
+    telephone: String,
+    legalRepresentative: String,
+    postcodeNumber: {type: String, length: 6},
+    dateOfRegistration: Date,
+    bankOfDeposit: String,
+    organizationCode: String,
+    director: String,
+    companyWebsite: String,
+    productsAndServices: Array(String),
+    effectiveTime: Array(Date),
+    remark: String,
     address: String,
-    created_at: Date,
-    updated_at: Date,
     expire_date: Date,
     master: String,
-});
-const Supplier = mongoose.model('supplier', SupplierSchema, 'supplier');
+    active: {
+        type: Boolean,
+        default: true
+    }
+}, {
+    timestamps: {
+        createdAt: 'created',
+        updatedAt: 'updated'
+    }
+})
+const Supplier = mongoose.model('supplier', SupplierSchema, 'supplier')
 
 module.exports = {
     User,
