@@ -48,6 +48,18 @@ router.all('/*', (req, res, next) => {
     })
 })
 
+router.get('/server/loginOut', (req, res) => {
+    const sessionId = req.cookies['session_id']
+    User.findOne({'session_id': sessionId}, (err, data) => {
+        if (!err) {
+            data.set('session_id', undefined)
+            data.save(err => {
+                console.log(err)
+            })
+            res.send('登出成功')
+        }
+    })
+})
 router.post('/server/loginIn', (req, res) => {
     const param = req.body
     let criteria = {
