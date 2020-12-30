@@ -1,13 +1,23 @@
 const express = require('express')
+const path = require('path')
 const app = express()
 const port = 3000
 
+app.all('*',(req, res, next) => {
+    next()
+})
 // static file
-app.use(express.static('./public'))
+// const publicPath = path.resolve('./public')
+const publicPath = path.resolve('../test_vue/dist')
+app.use(express.static(publicPath))
 
+// resolve and generate req.body
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.all('*',(req, res, next) => {
+    next()
+})
 // resolve cookies or body
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
